@@ -7,6 +7,7 @@ typedef struct{
 }Ponto;
 
 int dentroRet(Ponto *v1, Ponto *v2, Ponto *p);
+void imprime(Ponto v1, Ponto v2, Ponto p);
 
 int main(){
     Ponto v1;
@@ -55,14 +56,34 @@ int main(){
         printf("digitou errado \n");
         exit(1);
     }
+
+    imprime(v1,v2,p);
+    printf("o ponto p esta dentro do retangulo %d \n", dentroRet(&v1, &v2, &p));
+    return 0;
 }
 
 
 int dentroRet(Ponto *v1, Ponto *v2, Ponto *p){
-    if(p->x > v1->x && p->y >v1->y && p->x < v2->x && p->y < v2->y ){
+    if(p->x > v1->x && p->y > v1->y ){
+
+        if( p->x < v2->x && p->y < v2->y ){
+
         return 1;
+        }else{
+            return 0;
+        }
     }
     else {
         return 0;
     }
+}
+
+
+void imprime(Ponto v1, Ponto v2, Ponto p){
+
+    printf(" o ponto inferior do quadrado seria %d, %d\n", v1.x, v1.y);
+    printf(" o ponto superior do quadrado seria %d, %d\n", v2.x, v2.y);
+    printf(" o ponto que vc escolheu seria %d, %d\n", p.x, p.y);
+    printf("\n");
+
 }
